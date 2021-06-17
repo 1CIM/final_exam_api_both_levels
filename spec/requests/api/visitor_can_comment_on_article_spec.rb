@@ -3,7 +3,7 @@ RSpec.describe 'POST /api/articles/:id/comments', type: :request do
 
   describe 'Successfully creates a commetn' do
     before do
-      post "/api/articles/#{article.id}comments", params: {
+      post "/api/articles/#{article.id}/comments", params: {
         body: 'Wow such hook! u go kill?!'
       }
     end
@@ -17,7 +17,7 @@ RSpec.describe 'POST /api/articles/:id/comments', type: :request do
     end
 
     it 'is expected to add a comment to the article' do
-      expect(artice.comments.count).to eq 1
+      expect(article.comments.count).to eq 1
     end
 
     it 'is expected to create an instance of a comment with body content' do
