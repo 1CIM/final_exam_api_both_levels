@@ -24,4 +24,20 @@ RSpec.describe 'POST /api/articles/:id/comments', type: :request do
       expect(Comment.last['body']).to eq 'Wow such hook! u go kill?!'
     end
   end
+
+  describe 'Ussuccessful to post comment' do
+    before do
+      post "/api/articles/#{article.id}/comments", params: {
+        body: ''
+      }
+    end
+
+    it 'is expected to respond with a status of 422' do
+      expect(response).to have_http_status 422
+    end
+
+    it 'is expected to respond with a error message' do
+      expect(response_json['error_message']).to eq 'No empty comments bro!'
+    end
+  end
 end
