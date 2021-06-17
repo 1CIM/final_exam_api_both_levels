@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    body { "MyText" }
+    body { "AComment" }
+    association :article
   end
 end
